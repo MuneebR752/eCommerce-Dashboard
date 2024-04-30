@@ -15,5 +15,5 @@ server.get("/", (_, res) => {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`Server Running on PORT ${PORT}`);
+  console.log(`Server Running on http://localhost:${PORT}`);
 });

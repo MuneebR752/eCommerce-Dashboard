@@ -4,7 +4,7 @@
   "description": "An E-Commerce Admin Dashboard, providing essential functionalities for managing online stores efficiently. With features focused on Dashboard, Products, Orders, Customers, and Accounts, developers can build a robust backend system to streamline administration tasks and enhance user experience.",
   "main": "server.js",
   "scripts": {
-    "client": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch",
+    "client": "npx tailwindcss -i ./public/assets/css/input.css -o ./public/assets/css/output.css --watch",
     "server": "node --watch --env-file .env server.js"
   },
   "repository": {
