@@ -127,7 +127,7 @@
           </li>
           <li>
             <a
-              href="./"
+              href="../products/"
               class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
             >
               <svg
@@ -146,7 +146,7 @@
           </li>
           <li>
             <a
-              href="../orders/"
+              href="./"
               class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
             >
               <svg
@@ -210,7 +210,7 @@
       <div class="mt-20">
         <main class="bg-[#f4f4f4] w-full h-full px-8 py-6">
           <div class="flex flex-col gap-4">
-            <h1 class="my-8 text-5xl font-semibold">Products</h1>
+            <h1 class="my-8 text-5xl font-semibold">Orders</h1>
             <section class="bg-[#fcfcfc] rounded-lg px-0 py-8">
               <div
                 class="flex flex-col items-center justify-between px-4 space-y-3 md:flex-row"
@@ -221,10 +221,9 @@
                     id="stats-span"
                     class="box-border bg-[#fcfcfc] text-[#6f767e] text-[13px] font-semibold leading-[17px] px-6 py-2 rounded-lg border-2 border-solid border-[#efefef]"
                   >
-                    <option value="all">All Products</option>
-                    <option value="men">Men</option>
-                    <option value="women">Women</option>
-                    <option value="kid">Kids</option>
+                    <option value="all-ordres">All Orders</option>
+                    <option value="pending-orders">Pending Orders</option>
+                    <option value="completed-orders">Completed Orders</option>
                   </select>
                   <div class="flex items-center gap-3">
                     <input
@@ -254,15 +253,6 @@
                     </button>
                   </div>
                 </div>
-                <div>
-                  <button
-                    data-modal-target="default-modal"
-                    data-modal-toggle="default-modal"
-                    class="box-border px-4 py-2 text-sm font-semibold leading-4 text-white bg-blue-700 rounded-lg cursor-pointer hover:bg-blue-800"
-                  >
-                    Add Product
-                  </button>
-                </div>
               </div>
               <div class="flex flex-col my-4">
                 <div class="overflow-x-auto">
@@ -281,25 +271,25 @@
                               scope="col"
                               class="px-6 py-3 text-start text-[#6f767e] text-xs font-bold"
                             >
-                              Price
+                              Order Price
                             </th>
                             <th
                               scope="col"
                               class="px-6 py-3 text-start text-[#6f767e] text-xs font-bold"
                             >
-                              In Stock
+                              Customer Name
                             </th>
                             <th
                               scope="col"
                               class="px-6 py-3 text-start text-[#6f767e] text-xs font-bold"
                             >
-                              Category
+                              Address
                             </th>
                             <th
                               scope="col"
                               class="px-6 py-3 text-start text-[#6f767e] text-xs font-bold"
                             >
-                              Date
+                              Due Date
                             </th>
                             <th
                               scope="col"
@@ -333,17 +323,17 @@
                             <td
                               class="px-6 py-4 text-[#212529] text-[15px] font-bold"
                             >
-                              $ 2188,46
+                              $ 218
                             </td>
                             <td
                               class="px-6 py-4 text-[#1a1d1f] text-[15px] font-bold"
                             >
-                              4
+                              4XYZ
                             </td>
                             <td
                               class="px-6 py-4 text-[#1a1d1f] text-[15px] font-bold"
                             >
-                              Men
+                              H-78 S-66 Muslim Town Lahore
                             </td>
                             <td
                               class="px-6 py-4 text-[#212529] text-[15px] font-bold"
@@ -353,22 +343,14 @@
                             <td class="px-6 py-4">
                               <div class="flex gap-2">
                                 <button
-                                  class="shadow-[0px_2px_8px_rgba(0,0,0,0.12)] border-0"
+                                  class="box-border px-2 py-2 text-xs font-medium text-white bg-blue-700 rounded-lg cursor-pointer hover:bg-blue-800"
                                 >
-                                  <img
-                                    width="36"
-                                    src="../assets/img/Icon-visibility.png"
-                                    alt=""
-                                  />
+                                  Completed
                                 </button>
                                 <button
-                                  class="shadow-[0px_2px_8px_rgba(0,0,0,0.12)] border-0"
+                                  class="box-border px-2 py-2 text-xs font-medium text-white bg-red-700 rounded-lg cursor-pointer hover:bg-red-800"
                                 >
-                                  <img
-                                    width="36"
-                                    src="../assets/img/Icon-close.png"
-                                    alt=""
-                                  />
+                                  Remove
                                 </button>
                               </div>
                             </td>
@@ -396,17 +378,17 @@
                             <td
                               class="px-6 py-4 text-[#212529] text-[15px] font-bold"
                             >
-                              $ 2188,46
+                              $2188
                             </td>
                             <td
                               class="px-6 py-4 text-[#1a1d1f] text-[15px] font-bold"
                             >
-                              4
+                              4XYZ
                             </td>
                             <td
                               class="px-6 py-4 text-[#1a1d1f] text-[15px] font-bold"
                             >
-                              Women
+                              H-78 S-66 Muslim Town Lahore
                             </td>
                             <td
                               class="px-6 py-4 text-[#212529] text-[15px] font-bold"
@@ -416,22 +398,14 @@
                             <td class="px-6 py-4">
                               <div class="flex gap-2">
                                 <button
-                                  class="shadow-[0px_2px_8px_rgba(0,0,0,0.12)] border-0"
+                                  class="box-border px-2 py-2 text-xs font-medium text-white bg-blue-700 rounded-lg cursor-pointer hover:bg-blue-800"
                                 >
-                                  <img
-                                    width="36"
-                                    src="../assets/img/Icon-visibility.png"
-                                    alt=""
-                                  />
+                                  Completed
                                 </button>
                                 <button
-                                  class="shadow-[0px_2px_8px_rgba(0,0,0,0.12)] border-0"
+                                  class="box-border px-2 py-2 text-xs font-medium text-white bg-red-700 rounded-lg cursor-pointer hover:bg-red-800"
                                 >
-                                  <img
-                                    width="36"
-                                    src="../assets/img/Icon-close.png"
-                                    alt=""
-                                  />
+                                  Remove
                                 </button>
                               </div>
                             </td>
@@ -456,141 +430,5 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
-    <div
-      id="default-modal"
-      tabindex="-1"
-      aria-hidden="true"
-      class="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full h-screen overflow-x-hidden overflow-y-auto"
-    >
-      <div
-        class="relative max-w-xl max-h-[400px] bg-white rounded-lg shadow w-[432px] overflow-y-scroll no-scrollbar"
-      >
-        <!-- Modal header -->
-        <div
-          class="flex items-center justify-between p-4 border-b rounded-t md:p-5"
-        >
-          <h3 class="text-xl font-semibold text-gray-900">Add New Product</h3>
-          <button
-            type="button"
-            class="inline-flex items-center justify-center w-8 h-8 text-sm text-gray-400 bg-transparent rounded-lg hover:bg-gray-200 hover:text-gray-900 ms-auto"
-            data-modal-hide="default-modal"
-          >
-            <svg
-              class="w-3 h-3"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 14"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-              />
-            </svg>
-            <span class="sr-only">Close modal</span>
-          </button>
-        </div>
-        <!-- Modal body -->
-        <form class="p-4 space-y-4 md:p-5">
-          <div class="flex flex-col gap-2 my-6">
-            <label class="text-xs font-semibold leading-4" for="email"
-              >Product Name</label
-            >
-            <input
-              style="background-color: #f4f4f4"
-              type="text"
-              name="product-name"
-              id="product-name"
-              class="w-full box-border text-[#6f767e] font-medium leading-6 px-4 py-2 rounded-lg border-0 outline-none"
-              placeholder="Enter Product Name"
-            />
-          </div>
-          <div class="flex flex-col gap-2 my-6">
-            <label class="text-xs font-semibold leading-4" for="description"
-              >Description</label
-            >
-            <textarea
-              style="background-color: #f4f4f4"
-              name="description"
-              id="description"
-              class="w-full box-border text-[#6f767e] font-medium leading-6 px-4 py-2 rounded-lg border-0 outline-none"
-              placeholder="Enter Description"
-            ></textarea>
-          </div>
-
-          <div class="flex flex-col gap-2 my-6">
-            <label class="text-xs font-semibold leading-4" for="price"
-              >Price</label
-            >
-            <input
-              style="background-color: #f4f4f4"
-              type="number"
-              name="price"
-              id="price"
-              class="w-full box-border text-[#6f767e] font-medium leading-6 px-4 py-2 rounded-lg border-0 outline-none"
-              placeholder="Enter Price"
-            />
-          </div>
-
-          <div class="flex flex-col gap-2 my-6">
-            <label class="text-xs font-semibold leading-4" for="stock-quantity"
-              >Stock Quantity</label
-            >
-            <input
-              style="background-color: #f4f4f4"
-              type="number"
-              name="stock-quantity"
-              id="stock-quantity"
-              class="w-full box-border text-[#6f767e] font-medium leading-6 px-4 py-2 rounded-lg border-0 outline-none"
-              placeholder="Enter Stock Quantity"
-            />
-          </div>
-
-          <div class="flex flex-col gap-2 my-6">
-            <label class="text-xs font-semibold leading-4" for="category"
-              >Category</label
-            >
-            <select
-              style="background-color: #f4f4f4"
-              name="category"
-              id="category"
-              class="w-full box-border text-[#6f767e] font-medium leading-6 px-4 py-2 rounded-lg border-0 outline-none"
-            >
-              <option value="men">Men</option>
-              <option value="women">Women</option>
-              <option value="men">Kids</option>
-            </select>
-          </div>
-
-          <div class="flex flex-col gap-2 my-6">
-            <label class="text-xs font-semibold leading-4" for="image-url"
-              >Upload Image</label
-            >
-            <input
-              style="background-color: #f4f4f4"
-              type="file"
-              name="image"
-              id="image"
-              class="box-border w-full border-0 rounded-lg outline-none"
-            />
-          </div>
-        </form>
-        <!-- Modal footer -->
-        <div
-          class="flex items-center p-4 border-t border-gray-200 rounded-b md:p-5"
-        >
-          <button
-            data-modal-hide="default-modal"
-            type="button"
-            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-          >
-            Add
-          </button>
-        </div>
-      </div>
-    </div>
   </body>
 </html>
