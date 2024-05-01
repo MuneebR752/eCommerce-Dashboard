@@ -7,7 +7,7 @@
     <title>Login</title>
   </head>
   <body>
-    <form class="bg-[#fcfcfc]" action="">
+    <form class="bg-[#fcfcfc]" id="login-form">
       <div class="flex items-center justify-center w-full min-h-screen">
         <div class="max-w-lg my-8">
           <h1 class="text-5xl font-semibold leading-[48px] my-8 text-center">
@@ -39,29 +39,13 @@
               class="w-[432px] h-12 box-border bg-[#f4f4f4] text-[#6f767e] text-[15px] font-medium leading-6 px-2 py-0 rounded-[10px] border-0 outline-none"
               placeholder="********"
             />
-            <a
-              href="#"
-              class="text-[#2a85ff] text-xs font-medium leading-4 text-right"
-            >
-              Recover Password
-            </a>
-          </div>
-          <div class="flex gap-2 my-6">
-            <input
-              type="checkbox"
-              name="agree-on-terms"
-              id="agree-on-terms"
-              class="w-5 h-5 opacity-100 pointer-events-auto text-[rgba(252,252,252,1)] bg-[rgba(42,133,255,1)] shadow-[0px_0px_0px_rgba(0,0,0,0.08)] rounded-[5px] border-0"
-            />
-            <label for="text-xs font-medium leading-4"
-              >I agree with Terms and Conditions and Privacy Policy
-            </label>
           </div>
           <div class="flex justify-center my-6">
             <button
+              type="submit"
               class="w-[432px] h-12 bg-[#2a85ff] text-[#fcfcfc] text-[15px] font-bold leading-[20px] px-2 py-0 rounded-[10px] border-0 outline-none"
             >
-              Sign up
+              Login
             </button>
           </div>
           <div class="flex items-center gap-4 my-6">
@@ -89,5 +73,6 @@
         </div>
       </div>
     </form>
+    <script src="../assets/scripts/login.js"></script>
   </body>
 </html>

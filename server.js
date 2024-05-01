@@ -8,9 +8,78 @@ server.use(cors());
 server.use(morgan("dev"));
 server.use(express.json());
 
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "e-commerce",
+});
+
+connection.connect((err) => {
+  if (err) {
+    console.log("Error connecting to the Database");
+  } else {
+    console.log("Connected to the Database");
+  }
+});
+
 server.use(express.static("./public", { extensions: ["html"] }));
 server.get("/", (_, res) => {
   res.sendFile("./public/index");
+});
+
+server.post("/api/login", (req, res) => {
+  const { email, password } = req.body;
+  const query = "SELECT * FROM accounts WHERE email = ? AND password = ?";
+  connection.query(query, [email, password], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    } else if (result.length === 0) {
+      return res.status(404).json({ error: "User not found" });
+    } else {
+      const user = result[0];
+      return res.status(200).json({ user });
+    }
+  });
+});
+
+server.get("/api/users", (_, res) => {
+  const query = "SELECT * FROM signup";
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    } else {
+      return res.status(200).json(result);
+    }
+  });
+});
+
+server.get("/api/accounts", (_, res) => {
+  const query = "SELECT * FROM accounts";
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    } else {
+      return res.status(200).json(result);
+    }
+  });
+});
+
+server.post("/api/add-account", (req, res) => {
+  const { name, email, password, role } = req.body;
+  let newAccount;
+  const sql =
+    "INSERT INTO accounts (name, email, password, role) VALUES (?, ?, ?, ?)";
+  connection.query(sql, [name, email, password, role], (err, result) => {
+    if (err) {
+      console.error("Error inserting data into MySQL database:", err);
+      res.status(500).json({ error: "Failed to add account" });
+      return;
+    }
+    newAccount = result;
+    console.log("Account added successfully");
+    res.status(200).json({ newAccount, ok: true });
+  });
 });
 
 const PORT = process.env.PORT || 3000;

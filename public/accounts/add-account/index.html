@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../assets/css/output.css" />
+    <link rel="stylesheet" href="/assets/css/output.css" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css"
       rel="stylesheet"
     />
 
+    <script src="/assets/scripts/utils.js"></script>
     <script src="/assets/scripts/utils.js"></script>
     <title>Ecommerce Dashboard</title>
   </head>
@@ -39,8 +40,8 @@
                 ></path>
               </svg>
             </button>
-            <a href="./index.html" class="flex ms-2 md:me-24">
-              <img src="../assets/img/logo.png" class="h-8 me-3" alt="Logo" />
+            <a href="/" class="flex ms-2 md:me-24">
+              <img src="/assets/img/logo.png" class="h-8 me-3" alt="Logo" />
             </a>
           </div>
           <div class="flex items-center">
@@ -113,7 +114,7 @@
         <ul class="space-y-2 font-medium">
           <li>
             <a
-              href="../"
+              href="/"
               class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
             >
               <svg
@@ -135,7 +136,7 @@
           </li>
           <li>
             <a
-              href="../products/"
+              href="/products"
               class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
             >
               <svg
@@ -154,7 +155,7 @@
           </li>
           <li>
             <a
-              href="../orders/"
+              href="/orders/"
               class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
             >
               <svg
@@ -173,7 +174,7 @@
           </li>
           <li>
             <a
-              href="../users/"
+              href="/users/"
               class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
             >
               <svg
@@ -192,7 +193,7 @@
           </li>
           <li>
             <a
-              href="../accounts/"
+              href="/accounts/"
               class="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group"
             >
               <svg
@@ -218,102 +219,96 @@
       <div class="mt-20">
         <main class="bg-[#f4f4f4] w-full h-full px-8 py-6">
           <div class="flex flex-col gap-4">
-            <h1 class="my-8 text-5xl font-semibold">Users</h1>
+            <h1 class="my-8 text-5xl font-semibold">Account - ID</h1>
             <section class="bg-[#fcfcfc] rounded-lg px-0 py-8">
-              <div
-                class="flex flex-col items-center justify-between px-4 space-y-3 md:flex-row"
-              >
-                <div class="flex flex-col gap-2 md:flex-row">
-                  <select
-                    name="stats-span"
-                    id="stats-span"
-                    class="box-border bg-[#fcfcfc] text-[#6f767e] text-[13px] font-semibold leading-[17px] px-6 py-2 rounded-lg border-2 border-solid border-[#efefef]"
+              <div aria-hidden="true" class="w-full">
+                <div>
+                  <!-- Modal header -->
+                  <div
+                    class="flex items-center justify-between p-4 border-b rounded-t md:p-5"
                   >
-                    <option value="all-users">All Users</option>
-                    <option value="customers">Customers</option>
-                    <option value="non-customers">Non Customers</option>
-                  </select>
-                  <div class="flex items-center gap-3">
-                    <input
-                      style="background-color: #f4f4f4"
-                      type="text"
-                      name="search"
-                      id="search"
-                      class="bg-[#f4f4f4] text-[#6f767e] font-medium px-2 py-1.5 rounded-lg border-0 outline-none"
-                      placeholder="Search"
-                    />
-                    <button
-                      class="cursor-pointer flex justify-center items-center w-8 h-8 shadow-[0px_2px_8px_rgba(0,0,0,0.12)] bg-[#fcfcfc] rounded-[65px] border-0"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="w-4 h-4"
+                    <h3 class="text-xl font-semibold text-gray-900">
+                      Add Account
+                    </h3>
+                  </div>
+                  <!-- Modal body -->
+                  <form id="add-account-form" class="p-4 space-y-4 md:p-5">
+                    <div class="flex flex-col gap-2 my-6">
+                      <label class="text-xs font-semibold leading-4" for="name"
+                        >Name</label
                       >
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div class="flex flex-col my-4">
-                <div class="overflow-x-auto">
-                  <div class="inline-block min-w-full align-middle">
-                    <div class="overflow-hidden">
-                      <table class="min-w-full divide-y divide-gray-200">
-                        <thead>
-                          <tr>
-                            <th
-                              scope="col"
-                              class="px-6 py-3 text-start text-[#6f767e] text-xs font-bold"
-                            >
-                              Name
-                            </th>
-                            <th
-                              scope="col"
-                              class="px-6 py-3 text-start text-[#6f767e] text-xs font-bold"
-                            >
-                              Email
-                            </th>
-                            <th
-                              scope="col"
-                              class="px-6 py-3 text-start text-[#6f767e] text-xs font-bold"
-                            >
-                              Phone
-                            </th>
-                            <th
-                              scope="col"
-                              class="px-6 py-3 text-start text-[#6f767e] text-xs font-bold"
-                            >
-                              Total Orders
-                            </th>
-                            <th
-                              scope="col"
-                              class="px-6 py-3 text-start text-[#6f767e] text-xs font-bold"
-                            >
-                              Action
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody id="user-table"></tbody>
-                      </table>
+                      <input
+                        style="background-color: #f4f4f4"
+                        type="text"
+                        name="name"
+                        id="name"
+                        class="w-full box-border text-[#6f767e] font-medium leading-6 px-4 py-2 rounded-lg border-0 outline-none"
+                        placeholder="Enter Name"
+                      />
                     </div>
-                  </div>
+                    <div class="flex flex-col gap-2 my-6">
+                      <label class="text-xs font-semibold leading-4" for="email"
+                        >Email</label
+                      >
+                      <input
+                        style="background-color: #f4f4f4"
+                        type="email"
+                        name="email"
+                        id="email"
+                        class="w-full box-border text-[#6f767e] font-medium leading-6 px-4 py-2 rounded-lg border-0 outline-none"
+                        placeholder="Enter Email"
+                      />
+                    </div>
+
+                    <div class="flex flex-col gap-2 my-6">
+                      <label
+                        class="text-xs font-semibold leading-4"
+                        for="password"
+                        >Password</label
+                      >
+                      <input
+                        style="background-color: #f4f4f4"
+                        type="password"
+                        name="password"
+                        id="password"
+                        class="w-full box-border text-[#6f767e] font-medium leading-6 px-4 py-2 rounded-lg border-0 outline-none"
+                        placeholder="Enter Password"
+                      />
+                    </div>
+                    <div class="flex flex-col gap-2 my-6">
+                      <label class="text-xs font-semibold leading-4" for="role"
+                        >Role</label
+                      >
+                      <select
+                        style="background-color: #f4f4f4"
+                        name="role"
+                        id="role"
+                        class="w-full box-border text-[#6f767e] font-medium leading-6 px-4 py-2 rounded-lg border-0 outline-none"
+                      >
+                        <option value="admin">Admin</option>
+                        <option value="editor">Editor</option>
+                        <option value="viewr">Viewer</option>
+                      </select>
+                    </div>
+                    <!-- Modal footer -->
+                    <div
+                      class="flex items-center gap-4 p-4 border-t border-gray-200 rounded-b md:p-5"
+                    >
+                      <button
+                        type="submit"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                      >
+                        Add
+                      </button>
+                      <button
+                        type="reset"
+                        class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                      >
+                        Reset
+                      </button>
+                    </div>
+                  </form>
                 </div>
-              </div>
-              <hr />
-              <div class="flex justify-end gap-2 px-4 my-4 font-bold">
-                <p>Prev</p>
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>Next</p>
               </div>
             </section>
           </div>
@@ -322,6 +317,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
     <script src="/assets/scripts/postloadhtml.js"></script>
-    <script src="../assets/scripts/users.js"></script>
+    <script src="/assets/scripts/add-account.js"></script>
   </body>
 </html>
