@@ -33,26 +33,20 @@ document.addEventListener("DOMContentLoaded", async function () {
         ${account.role}
         </td>
         <td class="px-6 py-4">
-          <div class="flex gap-2">
-            <button
-              class="shadow-[0px_2px_8px_rgba(0,0,0,0.12)] border-0"
-            >
-              <img
-                width="36"
-                src="../assets/img/Icon-visibility.png"
-                alt=""
-              />
-            </button>
+          <div class="flex gap-2">  
             <button
                 class="shadow-[0px_2px_8px_rgba(0,0,0,0.12)] border-0"
                 >
+                <a href="/accounts/edit-account/?id=${account.id}">
                 <img
                     width="36"
                     src="../assets/img/pen.png"
                     alt=""
                 />
+                </a>
             </button>
             <button
+              onclick="deleteAccount(${account.id})"
               class="shadow-[0px_2px_8px_rgba(0,0,0,0.12)] border-0"
             >
               <img
@@ -68,3 +62,22 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
   }
 });
+
+async function deleteAccount(id) {
+  let confirmDelete = confirm("Are you sure you want to delete this account?");
+  console.log(confirmDelete);
+  if (confirmDelete) {
+    try {
+      const response = await fetch(`/api/account/${id}`, {
+        method: "DELETE",
+      });
+      if (!response.ok) {
+        throw new Error("Failed to delete account");
+      }
+      alert("Account deleted successfully");
+      location.reload();
+    } catch (error) {
+      console.error("Error deleting account:", error.message);
+    }
+  }
+}

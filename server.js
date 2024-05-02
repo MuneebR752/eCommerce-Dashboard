@@ -54,6 +54,19 @@ server.get("/api/users", (_, res) => {
   });
 });
 
+server.delete("/api/user/:id", (req, res) => {
+  const id = req.params.id;
+  const query = `DELETE FROM signup WHERE id=${id}`;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    } else {
+      return res.status(200).json({ ok: true });
+    }
+  });
+});
+
+//Accounts APIs
 server.get("/api/accounts", (_, res) => {
   const query = "SELECT * FROM accounts";
   connection.query(query, (err, result) => {
@@ -61,6 +74,31 @@ server.get("/api/accounts", (_, res) => {
       return res.status(500).json({ error: err });
     } else {
       return res.status(200).json(result);
+    }
+  });
+});
+
+server.get("/api/account/:id", (req, res) => {
+  const id = req.params.id;
+  const query = `SELECT * FROM accounts WHERE id= ${id} `;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    } else {
+      return res.status(200).json(result);
+    }
+  });
+});
+
+server.put("/api/account/:id", (req, res) => {
+  const id = req.params.id;
+  const { name, email, password, role } = req.body;
+  const query = `UPDATE accounts SET name=?, email=?, password=?, role=? WHERE id=${id}`;
+  connection.query(query, [name, email, password, role], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    } else {
+      return res.status(200).json({ ok: true });
     }
   });
 });
@@ -79,6 +117,18 @@ server.post("/api/add-account", (req, res) => {
     newAccount = result;
     console.log("Account added successfully");
     res.status(200).json({ newAccount, ok: true });
+  });
+});
+
+server.delete("/api/account/:id", (req, res) => {
+  const id = req.params.id;
+  const query = `DELETE FROM accounts WHERE id=${id}`;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    } else {
+      return res.status(200).json({ ok: true });
+    }
   });
 });
 

@@ -35,15 +35,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       <td class="px-6 py-4">
         <div class="flex gap-2">
           <button
-            class="shadow-[0px_2px_8px_rgba(0,0,0,0.12)] border-0"
-          >
-            <img
-              width="36"
-              src="../assets/img/Icon-visibility.png"
-              alt=""
-            />
-          </button>
-          <button
+            onclick="deleteUser(${user.id})"
             class="shadow-[0px_2px_8px_rgba(0,0,0,0.12)] border-0"
           >
             <img
@@ -59,3 +51,22 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
   }
 });
+
+async function deleteUser(id) {
+  if (!confirm("Are you sure you want to delete this user?")) {
+    return;
+  }
+  try {
+    const response = await fetch(`/api/user/${id}`, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to delete user");
+    }
+    alert("User deleted successfully");
+    window.location.href = "/users";
+  } catch (error) {
+    console.error("Error deleting user:", error.message);
+  }
+}

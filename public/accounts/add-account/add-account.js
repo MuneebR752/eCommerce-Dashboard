@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         throw new Error("Failed to add account");
       }
       alert("Account added successfully");
+      window.location.href = "/accounts";
     } catch (error) {
       console.error("Error adding account:", error.message);
     }
