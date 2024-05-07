@@ -132,6 +132,84 @@ server.delete("/api/account/:id", (req, res) => {
   });
 });
 
+//Products APIs
+
+server.post("/api/add-product", (req, res) => {
+  const { name, description, price, stock_quantity, category, image_url } =
+    req.body;
+  let newProduct;
+  const sql =
+    "INSERT INTO products (name, description, price, stock_quantity, category, image_url) VALUES (?, ?, ?, ?, ?, ?)";
+  connection.query(
+    sql,
+    [name, description, price, stock_quantity, category, image_url],
+    (err, result) => {
+      if (err) {
+        console.error("Error inserting data into MySQL database:", err);
+        res.status(500).json({ error: "Failed to add product" });
+        return;
+      }
+      newProduct = result;
+      console.log("Product added successfully");
+      res.status(200).json({ newProduct, ok: true });
+    }
+  );
+});
+
+server.get("/api/products", (_, res) => {
+  const query = "SELECT * FROM products";
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    } else {
+      return res.status(200).json(result);
+    }
+  });
+});
+
+server.get("/api/product/:id", (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  const query = `SELECT * FROM products WHERE product_id= ${id} `;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    } else {
+      return res.status(200).json(result);
+    }
+  });
+});
+
+server.put("/api/product/:id", (req, res) => {
+  const id = req.params.id;
+  const { name, description, price, stock_quantity, category, image_url } =
+    req.body;
+  const query = `UPDATE products SET name=?, description=?, price=?, stock_quantity=?, category=?, image_url=? WHERE product_id=${id}`;
+  connection.query(
+    query,
+    [name, description, price, stock_quantity, category, image_url],
+    (err, result) => {
+      if (err) {
+        return res.status(500).json({ error: err });
+      } else {
+        return res.status(200).json({ ok: true });
+      }
+    }
+  );
+});
+
+server.delete("/api/product/:id", (req, res) => {
+  const id = req.params.id;
+  const query = `DELETE FROM products WHERE product_id=${id}`;
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    } else {
+      return res.status(200).json({ ok: true });
+    }
+  });
+});
+
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server Running on http://localhost:${PORT}`);
