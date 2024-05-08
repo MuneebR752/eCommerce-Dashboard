@@ -1,7 +1,14 @@
+let category = new URLSearchParams(window.location.search).get("category");
 document.addEventListener("DOMContentLoaded", async function () {
   let products = await fetch("/api/products").then((res) => res.json());
   const productsTable = document.querySelector("#product-table");
-
+  if (category) {
+    let selectedCat = document.getElementById("stats-span");
+    selectedCat.value = category;
+  }
+  if (category && category !== "all") {
+    products = products.filter((product) => product.category === category);
+  }
   if (products.length > 0) {
     products.map((product) => {
       productsTable.innerHTML += `
@@ -94,4 +101,13 @@ async function deleteProduct(id) {
   } catch (error) {
     console.error("Error deleting product:", error.message);
   }
+}
+
+function handleCategoryChange(value) {
+  const category = value;
+  if (category === "all") {
+    window.location.href = `/products`;
+    return;
+  }
+  window.location.href = `/products?category=${category}`;
 }

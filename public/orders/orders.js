@@ -1,6 +1,17 @@
+let order_status = new URLSearchParams(window.location.search).get(
+  "order_status"
+);
 document.addEventListener("DOMContentLoaded", async function () {
   let orders = await fetch("/api/orders").then((res) => res.json());
   const ordersTable = document.querySelector("#order-table");
+  console.log(order_status);
+  if (order_status) {
+    let selectedCat = document.getElementById("stats-span");
+    selectedCat.value = order_status;
+  }
+  if (order_status && order_status !== "all-ordres") {
+    orders = orders.filter((order) => order.status === order_status);
+  }
 
   if (orders.length > 0) {
     orders.map((order) => {
@@ -51,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async function () {
           : `<td class="px-6 py-4 text-[15px] font-bold text-red-600">Pending</td>`
       }
       ${
-        order.status === "Pending"
+        order.status === "pending"
           ? `<td><button
           onclick="completeOrder(${order.order_id})"
       class="box-border px-2 py-2 text-xs font-medium text-white bg-blue-700 rounded-lg cursor-pointer hover:bg-blue-800"
@@ -76,4 +87,12 @@ async function completeOrder(orderId) {
     body: JSON.stringify({ status: "completed" }),
   });
   location.reload();
+}
+function handleOrderStatusChange(value) {
+  const order_status = value;
+  if (order_status === "all-ordres") {
+    window.location.href = `/orders`;
+    return;
+  }
+  window.location.href = `/orders?order_status=${order_status}`;
 }
