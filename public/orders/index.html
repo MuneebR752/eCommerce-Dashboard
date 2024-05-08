@@ -276,122 +276,17 @@
                               scope="col"
                               class="px-6 py-3 text-start text-[#6f767e] text-xs font-bold"
                             >
+                              Status
+                            </th>
+                            <th
+                              scope="col"
+                              class="px-6 py-3 text-start text-[#6f767e] text-xs font-bold"
+                            >
                               Action
                             </th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr class="odd:bg-[#efefef] even:bg-[#fcfcfc]">
-                            <td class="px-6 py-2">
-                              <div class="flex items-center gap-2">
-                                <div>
-                                  <img
-                                    width="63"
-                                    height="80"
-                                    src="../assets/img/product-img.png"
-                                    alt="product"
-                                  />
-                                </div>
-                                <div class="flex flex-col">
-                                  <p
-                                    class="text-[#1a1d1f] text-[15px] font-bold"
-                                  >
-                                    Product - 3600
-                                  </p>
-                                </div>
-                              </div>
-                            </td>
-                            <td
-                              class="px-6 py-4 text-[#212529] text-[15px] font-bold"
-                            >
-                              $ 218
-                            </td>
-                            <td
-                              class="px-6 py-4 text-[#1a1d1f] text-[15px] font-bold"
-                            >
-                              4XYZ
-                            </td>
-                            <td
-                              class="px-6 py-4 text-[#1a1d1f] text-[15px] font-bold"
-                            >
-                              H-78 S-66 Muslim Town Lahore
-                            </td>
-                            <td
-                              class="px-6 py-4 text-[#212529] text-[15px] font-bold"
-                            >
-                              14/09/2021
-                            </td>
-                            <td class="px-6 py-4">
-                              <div class="flex gap-2">
-                                <button
-                                  class="box-border px-2 py-2 text-xs font-medium text-white bg-blue-700 rounded-lg cursor-pointer hover:bg-blue-800"
-                                >
-                                  Completed
-                                </button>
-                                <button
-                                  class="box-border px-2 py-2 text-xs font-medium text-white bg-red-700 rounded-lg cursor-pointer hover:bg-red-800"
-                                >
-                                  Remove
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                          <tr class="odd:bg-[#efefef] even:bg-[#fcfcfc]">
-                            <td class="px-6 py-2">
-                              <div class="flex items-center gap-2">
-                                <div>
-                                  <img
-                                    width="63"
-                                    height="80"
-                                    src="../assets/img/product-img.png"
-                                    alt="product"
-                                  />
-                                </div>
-                                <div class="flex flex-col">
-                                  <p
-                                    class="text-[#1a1d1f] text-[15px] font-bold"
-                                  >
-                                    Product - 3600
-                                  </p>
-                                </div>
-                              </div>
-                            </td>
-                            <td
-                              class="px-6 py-4 text-[#212529] text-[15px] font-bold"
-                            >
-                              $2188
-                            </td>
-                            <td
-                              class="px-6 py-4 text-[#1a1d1f] text-[15px] font-bold"
-                            >
-                              4XYZ
-                            </td>
-                            <td
-                              class="px-6 py-4 text-[#1a1d1f] text-[15px] font-bold"
-                            >
-                              H-78 S-66 Muslim Town Lahore
-                            </td>
-                            <td
-                              class="px-6 py-4 text-[#212529] text-[15px] font-bold"
-                            >
-                              14/09/2021
-                            </td>
-                            <td class="px-6 py-4">
-                              <div class="flex gap-2">
-                                <button
-                                  class="box-border px-2 py-2 text-xs font-medium text-white bg-blue-700 rounded-lg cursor-pointer hover:bg-blue-800"
-                                >
-                                  Completed
-                                </button>
-                                <button
-                                  class="box-border px-2 py-2 text-xs font-medium text-white bg-red-700 rounded-lg cursor-pointer hover:bg-red-800"
-                                >
-                                  Remove
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
+                        <tbody id="order-table"></tbody>
                       </table>
                     </div>
                   </div>
@@ -412,5 +307,6 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
     <script src="/assets/scripts/postloadhtml.js"></script>
+    <script src="./orders.js"></script>
   </body>
 </html>

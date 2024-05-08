@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         <td
           class="px-6 py-4 text-[#212529] text-[15px] font-bold"
         >
-          ${product.created_at}
+          ${new Date(product.created_at).toISOString().split("T")[0]}
         </td>
         <td class="px-6 py-4">
           <div class="flex gap-2">

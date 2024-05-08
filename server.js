@@ -210,6 +210,31 @@ server.delete("/api/product/:id", (req, res) => {
   });
 });
 
+//Orders APIs
+server.get("/api/orders", (_, res) => {
+  const query = "SELECT * FROM orders";
+  connection.query(query, (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    } else {
+      return res.status(200).json(result);
+    }
+  });
+});
+
+server.put("/api/order/:id", (req, res) => {
+  const id = req.params.id;
+  const { status } = req.body;
+  const query = `UPDATE orders SET status=? WHERE order_id=${id}`;
+  connection.query(query, [status], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    } else {
+      return res.status(200).json({ ok: true });
+    }
+  });
+});
+
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server Running on http://localhost:${PORT}`);
