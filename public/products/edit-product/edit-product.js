@@ -25,14 +25,14 @@ document.addEventListener("DOMContentLoaded", async function () {
   <label class="text-xs font-semibold leading-4" for="description"
     >Description</label
   >
-  <textarea
+  <input
     value='${product.description}'
     oninput="updateInputValue(this)"
     style="background-color: #f4f4f4"
     name="description"
     id="description"
     class="w-full box-border text-[#6f767e] font-medium leading-6 px-4 py-2 rounded-lg border-0 outline-none"
-  ></textarea>
+  />
 </div>
 
 <div class="flex flex-col gap-2 my-6">
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     type="text"
     name="image"
     id="image"
-    class="box-border w-full border-0 rounded-lg outline-none"
+    class="w-full box-border text-[#6f767e] font-medium leading-6 px-4 py-2 rounded-lg border-0 outline-none"
   />
 </div>`;
 });
