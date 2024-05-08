@@ -44,7 +44,7 @@ server.post("/api/login", (req, res) => {
 });
 
 server.get("/api/users", (_, res) => {
-  const query = "SELECT * FROM signup";
+  const query = "SELECT * FROM users";
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({ error: err });
@@ -56,7 +56,7 @@ server.get("/api/users", (_, res) => {
 
 server.delete("/api/user/:id", (req, res) => {
   const id = req.params.id;
-  const query = `DELETE FROM signup WHERE id=${id}`;
+  const query = `DELETE FROM users WHERE id=${id}`;
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({ error: err });
@@ -232,6 +232,36 @@ server.put("/api/order/:id", (req, res) => {
     } else {
       return res.status(200).json({ ok: true });
     }
+  });
+});
+
+server.get("/api/getTotalNumber", (_, res) => {
+  const ordersQuery = "SELECT COUNT(*) AS orderCount FROM orders";
+  const productsQuery = "SELECT COUNT(*) AS productCount FROM products";
+  const usersQuery = "SELECT COUNT(*) AS userCount FROM users";
+
+  connection.query(ordersQuery, (err, ordersResult) => {
+    if (err) {
+      return res.status(500).json({ error: err });
+    }
+
+    connection.query(productsQuery, (err, productsResult) => {
+      if (err) {
+        return res.status(500).json({ error: err });
+      }
+
+      connection.query(usersQuery, (err, usersResult) => {
+        if (err) {
+          return res.status(500).json({ error: err });
+        }
+
+        const orderCount = ordersResult[0].orderCount;
+        const productCount = productsResult[0].productCount;
+        const userCount = usersResult[0].userCount;
+
+        return res.status(200).json({ orderCount, productCount, userCount });
+      });
+    });
   });
 });
 
