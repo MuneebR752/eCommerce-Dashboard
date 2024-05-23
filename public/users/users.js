@@ -27,11 +27,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       >
         ${user.phoneno}
       </td>
-      <td
-        class="px-6 py-4 text-[#212529] text-[15px] font-bold"
-      >
-        70
-      </td>
       <td class="px-6 py-4">
         <div class="flex gap-2">
           <button

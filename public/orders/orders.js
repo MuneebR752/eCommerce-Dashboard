@@ -21,8 +21,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         <div class="flex items-center gap-2">
           <div>
             <img
-              width="63"
-              height="80"
+              class="w-0 sm:w-16"
               src=${order.product_image_url}
               alt="product"
             />

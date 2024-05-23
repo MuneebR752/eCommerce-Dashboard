@@ -1,10 +1,8 @@
 const express = require("express");
 const mysql = require("mysql");
-const cors = require("cors");
 const morgan = require("morgan");
 
 const server = express();
-// server.use(cors());
 server.use(morgan("dev"));
 server.use(express.json());
 
@@ -135,14 +133,14 @@ server.delete("/api/account/:id", (req, res) => {
 //Products APIs
 
 server.post("/api/add-product", (req, res) => {
-  const { name, description, price, stock_quantity, category, image_url } =
+  const { title, price, stock_quantity, category, image } =
     req.body;
   let newProduct;
   const sql =
-    "INSERT INTO products (name, description, price, stock_quantity, category, image_url) VALUES (?, ?, ?, ?, ?, ?)";
+    "INSERT INTO products (title, price, stock_quantity, category, image) VALUES (?, ?, ?, ?, ?)";
   connection.query(
     sql,
-    [name, description, price, stock_quantity, category, image_url],
+    [title, price, stock_quantity, category, image],
     (err, result) => {
       if (err) {
         console.error("Error inserting data into MySQL database:", err);
@@ -170,7 +168,7 @@ server.get("/api/products", (_, res) => {
 server.get("/api/product/:id", (req, res) => {
   const id = req.params.id;
   console.log(id);
-  const query = `SELECT * FROM products WHERE product_id= ${id} `;
+  const query = `SELECT * FROM products WHERE id= ${id} `;
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({ error: err });
@@ -182,12 +180,11 @@ server.get("/api/product/:id", (req, res) => {
 
 server.put("/api/product/:id", (req, res) => {
   const id = req.params.id;
-  const { name, description, price, stock_quantity, category, image_url } =
-    req.body;
-  const query = `UPDATE products SET name=?, description=?, price=?, stock_quantity=?, category=?, image_url=? WHERE product_id=${id}`;
+  const { title, price, stock_quantity, category, image } = req.body;
+  const query = `UPDATE products SET title=?, price=?, stock_quantity=?, category=?, image=? WHERE id=${id}`;
   connection.query(
     query,
-    [name, description, price, stock_quantity, category, image_url],
+    [title, price, stock_quantity, category, image],
     (err, result) => {
       if (err) {
         return res.status(500).json({ error: err });
@@ -200,7 +197,7 @@ server.put("/api/product/:id", (req, res) => {
 
 server.delete("/api/product/:id", (req, res) => {
   const id = req.params.id;
-  const query = `DELETE FROM products WHERE product_id=${id}`;
+  const query = `DELETE FROM products WHERE id=${id}`;
   connection.query(query, (err, result) => {
     if (err) {
       return res.status(500).json({ error: err });
@@ -236,7 +233,8 @@ server.put("/api/order/:id", (req, res) => {
 });
 
 server.get("/api/getTotalNumber", (_, res) => {
-  const ordersQuery = "SELECT COUNT(*) AS orderCount FROM orders";
+  const ordersQuery =
+    "SELECT COUNT(*) AS orderCount FROM orders WHERE status = 'pending';";
   const productsQuery = "SELECT COUNT(*) AS productCount FROM products";
   const usersQuery = "SELECT COUNT(*) AS userCount FROM users";
 

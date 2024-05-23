@@ -3,7 +3,6 @@ const id = urlParams.get("id");
 document.addEventListener("DOMContentLoaded", async function () {
   let response = await fetch(`/api/product/${id}`).then((res) => res.json());
   const product = response[0];
-  console.log(product.description);
   const editproductForm = document.querySelector("#edit-product-form");
   editproductForm.innerHTML = `
   <div class="flex flex-col gap-2 my-6">
@@ -11,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     >Product Name</label
   >
   <input
-    value="${product.name}"
+    value="${product.title}"
     oninput="updateInputValue(this)"
     style="background-color: #f4f4f4"
     type="text"
@@ -21,20 +20,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     placeholder="Enter Product Name"
   />
 </div>
-<div class="flex flex-col gap-2 my-6">
-  <label class="text-xs font-semibold leading-4" for="description"
-    >Description</label
-  >
-  <input
-    value='${product.description}'
-    oninput="updateInputValue(this)"
-    style="background-color: #f4f4f4"
-    name="description"
-    id="description"
-    class="w-full box-border text-[#6f767e] font-medium leading-6 px-4 py-2 rounded-lg border-0 outline-none"
-  />
-</div>
-
 <div class="flex flex-col gap-2 my-6">
   <label class="text-xs font-semibold leading-4" for="price"
     >Price</label
@@ -90,7 +75,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     >Image URL</label
   >
   <input
-    value=${product.image_url}
+    value=${product.image}
     oninput="updateInputValue(this)"
     style="background-color: #f4f4f4"
     type="text"
@@ -101,12 +86,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 </div>`;
 });
 async function updateProduct() {
-  const name = document.querySelector("#product-name").value;
-  const description = document.querySelector("#description").value;
+  const title = document.querySelector("#product-name").value;
   const price = document.querySelector("#price").value;
   const stock_quantity = document.querySelector("#stock-quantity").value;
   const category = document.querySelector("#category").value;
-  const image_url = document.querySelector("#image").value;
+  const image = document.querySelector("#image").value;
 
   let confirmUpdate = confirm("Are you sure you want to update this product?");
   if (!confirmUpdate) {
@@ -118,14 +102,14 @@ async function updateProduct() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      name,
-      description,
+      title,
       price,
       stock_quantity,
       category,
-      image_url,
+      image,
     }),
   }).then((res) => res.json());
+  console.log(response);
   if (response.ok) {
     alert("product updated successfully");
     window.location.href = "/products";

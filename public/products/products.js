@@ -1,6 +1,7 @@
 let category = new URLSearchParams(window.location.search).get("category");
 document.addEventListener("DOMContentLoaded", async function () {
   let products = await fetch("/api/products").then((res) => res.json());
+  console.log(products);
   const productsTable = document.querySelector("#product-table");
   if (category) {
     let selectedCat = document.getElementById("stats-span");
@@ -17,9 +18,8 @@ document.addEventListener("DOMContentLoaded", async function () {
           <div class="flex items-center gap-2">
             <div>
               <img
-                width="63"
-                height="80"
-                src="${product.image_url}"
+                class="w-0 sm:w-16"
+                src="${product.image}"
                 alt="product"
               />
             </div>
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async function () {
               <p
                 class="text-[#1a1d1f] text-[15px] font-bold"
               >
-                ${product.name}
+                ${product.title}
               </p>
             </div>
           </div>
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             <button
               class="shadow-[0px_2px_8px_rgba(0,0,0,0.12)] border-0"
             >
-            <a href="/products/edit-product/?id=${product.product_id}">
+            <a href="/products/edit-product/?id=${product.id}">
               <img
                 width="36"
                 src="../assets/img/pen.png"
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", async function () {
               </a>
             </button>
             <button
-              onclick="deleteProduct(${product.product_id})"
+              onclick="deleteProduct(${product.id})"
               class="shadow-[0px_2px_8px_rgba(0,0,0,0.12)] border-0"
             >
               <img
